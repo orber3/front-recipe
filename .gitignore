@@ -21,3 +21,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+#  google login
+# client id 804267482082-d6nsm6snr43b6v7be897fdii1pht6uc6.apps.googleusercontent.com
+# client secret khIHw_7gfSmTXLRMem69Q-ik

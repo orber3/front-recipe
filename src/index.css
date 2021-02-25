@@ -1,13 +1,173 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+/* basic set up */
+*{ 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* overflow-x: hidden; */
+}
+#app-container {
+    width: 100%;
+    margin: 0px;
+    margin-left: 7px;
+}
+#root { 
+    height: auto;
+
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.container { 
+    margin-left: 0;
+    margin-right: 0;
+    margin: 0;
+ 
+
+}
+html, body { 
+    background: rgb(241, 236, 212);
+    background: linear-gradient(62deg, rgba(248, 245, 230, 0.911) 0%, rgb(255, 252, 240) 100%);    height: auto;
+    /* display: flexbox; */
+}
+.makeStyles-root-1 { 
+     background: rgb(241, 236, 212);
+    background: linear-gradient(62deg, rgba(248, 245, 230, 0.911) 0%, rgb(255, 252, 240) 100%);    height: auto;
+}
+.MuiGrid-container { 
+    background: rgb(241, 236, 212);
+    background: linear-gradient(62deg, rgba(248, 245, 230, 0.911) 0%, rgb(255, 252, 240) 100%);    height: auto;
+}
+/* HEADER ???????????????????? */
+/* header { 
+background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)) , url("../src/PICS/hero.jpg");
+height: 40vh;
+background-size: cover;
+background-position: center;
+background-attachment: fixed;
+} */
+
+.bg-dark {
+   border-radius: 130px;
+   box-shadow: 0 2px 2px rgb(143, 141, 141);
+}
+.navbar-collapse { 
+    justify-content: flex-end;
+    font-size: 120%;
+}
+.a.nav-link {
+    color: white;
+}
+#basic-navbar-nav {
+    color: white;
+}
+#login-btn { 
+    float: left;
+    color: rgba(184, 174, 174, 0.918);
+    justify-content: flex-start;
+    margin-right: auto;
+
+} 
+header { 
+    padding-bottom: 40px;
+    margin-bottom: 40px;
+}
+
+
+
+/* forms ********************* */
+
+.form-control { 
+    background: rgb(236, 232, 215);
+    background: linear-gradient(62deg, rgba(240, 237, 225, 0.903) 0%, rgb(230, 224, 202) 100%); 
+
+}
+.form-group { 
+    padding-top: 20px;
+}
+
+
+
+/* ************CARD */
+
+#user-p {
+    margin-bottom: 0px;
+}
+#typ { 
+    white-space: pre;
+
+}
+
+/* pic setting */
+.MuiCardMedia-root {
+        opacity: 0.7;
+        overflow: hidden;
+        transform: scale(0.95);
+        transition: transform 0.6s , opacity 0.7s;
+        padding-bottom: 20px;
+    }
+    
+    .MuiCardMedia-root:hover { 
+        transform: scale(1.1);
+        opacity: 1.3;
+    }
+
+    /* heart color */
+
+
+.MuiIconButton-label { 
+    color: red;
+}
+
+
+.MuiIconButton-label:hover { 
+    color: blue;
+}
+
+
+.MuiIconButton-label:visited { 
+    color: blue;
+}
+
+
+
+
+.MuiIconButton-label:active { 
+    color: blue;
+}
+
+
+/* ****************show singlerecipe***** */
+/* clock */
+#ns {  background: rgb(241, 236, 212);
+    background: linear-gradient(62deg, rgba(248, 245, 230, 0.911) 0%, rgb(255, 252, 240) 100%);    height: auto;
+}
+
+
+/* showing the data */
+#ShowData { 
+    white-space: pre;
+    font-size: 200%;
+    font-weight: 500;
+    font-family:  sans-serif
+}
+
+#ingCon { 
+    margin-top: 9px ;
+    margin-bottom: 9px;
+}
+
+#photoCon { 
+    margin-top: 9px ;
+margin-right: 10px;
+
+}
+img {  
+    width: 300px;
+    height: 300px;
+    object-fit: fill;
+    transform: scale(1);
+    transition: transform 0.6s , opacity 0.7s;
+
+}
+img:hover { 
+    transform: scale(2.0);
 }
