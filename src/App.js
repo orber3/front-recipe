@@ -8,14 +8,17 @@ import MyRecipeListScreen from './screens/myRecipeListScreen'
 import CreateNewRecipe from './screens/createRecipeScreen'
 import getRecipeScreen from './screens/getRecipeScreen'
 import EditRecipeScreen from './screens/editRecipeScreen'
-
+import HelmetMetaData from "./components/Helemt";
 
 import bootstrap from 'bootstrap'
 
 const App = () => {
     return (
+   
         <Router> 
 <Header />
+<HelmetMetaData></HelmetMetaData>
+
 <main> 
       <Container id="app-container"> 
       <Route path= '/list'  component = {RecipeListScreen}  /> 

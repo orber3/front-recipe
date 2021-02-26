@@ -69,6 +69,7 @@ export const createRecipe = (recipe) => async (dispatch,getState) =>  {
 
 
 export const MyRecipeList = (user) => async (dispatch,getState) =>  {
+
     try { 
 
         dispatch({ 
@@ -80,7 +81,8 @@ export const MyRecipeList = (user) => async (dispatch,getState) =>  {
                 'Content-Type': 'application/json',
             },
         }
-        const {data } = await axios.get(`http://192.168.1.21:5000/api/recipe/my` , config)
+
+        const {data } = await axios.get(`http://192.168.1.21:5000/api/recipe/my?user=${user.email}` , config)
 
             dispatch({ 
                 type:  MY_RECIPE_LIST_SUCCESS,

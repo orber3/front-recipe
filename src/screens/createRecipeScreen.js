@@ -17,8 +17,9 @@ const CreateRecipeScreen = ({location , history}) => {
     const addRecipe = useSelector((state) => state.addRecipe)
     const {recipe, success, loading,error} = addRecipe
     const auth = useSelector((state) => state.auth)
-    const {user} = auth;
-    const {email} = user;
+    const {user} = auth
+    const userId = user._id
+    console.log(userId)
     const dispatch = useDispatch()
     const date = new Date().toLocaleDateString();
 

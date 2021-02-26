@@ -9,6 +9,7 @@ import Google  from './Google';
 
 
 const Header = () => {
+  const mediaQuery = window.matchMedia('(min-width: 992px)')
 
   const auth = useSelector((state) => state.auth)
   const {isSignedIn , user} = auth
@@ -18,7 +19,7 @@ const Header = () => {
 
 
 <Navbar  bg="dark" variant= 'dark' expand="lg" collapseOnSelect >
-  <Container> 
+  <Container id="headerCon">
   
 
   <Navbar.Brand href="#home">Recpie-House</Navbar.Brand>
@@ -26,17 +27,27 @@ const Header = () => {
   <Navbar.Collapse id="basic-navbar-nav ">
       <Nav id="login-btn" > 
 
-<Nav.Link href="#login" >   <Google />  {
-isSignedIn ?` hello ${user.name}` : ""
 
-}   </Nav.Link>
+    {   mediaQuery.matches ? 
+<Nav.Link>   <Google />  {
+isSignedIn ?` hello ${user.name}` : ""
+}
+ </Nav.Link>  
+ : 
+      
+<Nav.Link  >   <Google />    </Nav.Link> 
+}
   </Nav>
     <Nav className="justify-content-end">
       <LinkContainer to='/new'> 
       <Nav.Link >NEW RECIPE</Nav.Link>
       </LinkContainer>
       <Nav.Link href="/list"> ALL RECIPES</Nav.Link>
-      <Nav.Link href="/my"> My RECIPES</Nav.Link>
+      { isSignedIn ?
+         <Nav.Link href="/my"> My RECIPES</Nav.Link>
+: ""
+    }
+   
 
       </Nav>
       </Navbar.Collapse>

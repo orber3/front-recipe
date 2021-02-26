@@ -1,4 +1,7 @@
 
+import { USER_LOGIN_REQUEST,USER_LOGIN_FAIL,USER_LOGIN_LOGOUT,USER_LOGIN_SUCCESS } from '../Constants/userConstants'
+
+
 
 
 
@@ -8,10 +11,20 @@ const INITIAL_STATE = {
 
 export const authReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case 'SIGN_IN':
-            return { isSignedIn: true  , user: action.payload};
-        case 'SIGN_OUT':
-            return {...state, isSignedIn: false };
+
+        case USER_LOGIN_REQUEST:
+        return { loading: true , ...state }
+        
+        case USER_LOGIN_SUCCESS:
+        return { loading: false , success: true , isSignedIn: true  , user: action.payload }
+    
+        case USER_LOGIN_FAIL:
+        return { loading: false , error: action.payload }
+    
+        case USER_LOGIN_LOGOUT:
+            return {...state, isSignedIn: false , user: {}  };
+
+
         default:
             return state;
     }

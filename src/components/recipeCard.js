@@ -22,6 +22,8 @@ import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import {Link} from 'react-router-dom'
 import { useDispatch , useSelector} from 'react-redux'
 import {deleteRecipeAction} from '../Actions/recipeAction'
+import {FacebookShareButton , WhatsappShareButton,WhatsappIcon, FacebookIcon} from 'react-share'
+import HelmetMetaData from "./Helemt";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -89,7 +91,17 @@ if(link){
     setExpanded(!expanded);
   };
 
-  return (
+
+<React.Fragment> 
+<meta property="og:image" content={`http://192.168.1.21:5000/api/${link}`}> </meta>
+    <meta property="og:image:secure_url" content={`http://192.168.1.21:5000/api/${link}`}> </meta>
+</React.Fragment>
+
+return (
+
+
+
+
     <Card className={classes.root}>
       <CardHeader
         avatar={   
@@ -123,7 +135,10 @@ onClose={handleClose}
   </MenuItem>
  
 <MenuItem ><Link to={`/recipeEdit/${props.id}/edit`}> Edit Recipe</Link></MenuItem>
+<MenuItem >
 
+
+ </MenuItem>
 
 <MenuItem onClick= {() => handleDelete(props.id)}>Delete</MenuItem>
 </Menu> 
@@ -167,8 +182,34 @@ onClose={handleClose}
         <IconButton aria-label="add">
           <FavoriteIcon />
         </IconButton>
+
+        <IconButton aria-label="sharewh">
+        <WhatsappShareButton
+   
+        url={`http://192.168.1.21:3000/list/${props.id}`}
+        title={props.title}>
+          <WhatsappIcon size={22}/>
+     
+        </WhatsappShareButton>
+        </IconButton>
+
+
         <IconButton aria-label="share">
-          <ShareIcon />
+          
+<HelmetMetaData
+
+title={props.title}
+description={props.description}
+image={`http://192.168.1.21:5000/api/${link}`} >
+</HelmetMetaData>
+        <FacebookShareButton 
+                url={`http://192.168.1.21:3000/list/${props.id}`}
+                quote={`${props.name}`}
+                image={`http://192.168.1.21:5000/api/${link}`}
+                className={classes.socialMediaButton}>
+                 <FacebookIcon size={22} />
+              </FacebookShareButton>
+
         </IconButton>
         <Typography paragraph id="user-p">
             {props.user}

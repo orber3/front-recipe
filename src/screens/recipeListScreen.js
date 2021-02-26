@@ -33,9 +33,9 @@ const RecipeListScreen = ({history,match}) => {
         <>
           {loading ? <Loader /> :
             <div className={classes.root}> 
-<Grid   container  spacing={2}>
+<Grid   container  id="listgrid" spacing={2}>
 <Grid item lg={12}>
-<Grid container justify="center" spacing={2}>
+<Grid container  justify="center" spacing={2}>
 
 {recipes.map(recipe => (  
 

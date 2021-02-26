@@ -1,0 +1,47 @@
+
+/* big tabltes -1024-1200 px */
+@media only screen and (max-width : 1200px) {
+    
+    #listgrid { 
+        justify-content: center !important;
+        
+    }
+    #small { 
+        display: none !important;
+        
+    }
+}
+
+
+
+/* small tabltes-big tabltes -768-1023 px */
+@media only screen and (max-width: 1023px) {
+    #headerCon { 
+        margin-left: 30px  !important;
+
+    }
+    #listgrid { 
+        justify-content: center !important;
+        
+    }
+
+    #big { 
+        display: none  !important;
+    }
+    #small { 
+        display: grid;
+    }
+
+    #ingCon { 
+        justify-content: space-evenly  !important ;
+        align-items: flex-start !important ; 
+    }
+}
+
+
+
+/* small phones-small tabltes - 481-767 px */
+@media only screen and (max-width: 767px) {
+
+
+}
