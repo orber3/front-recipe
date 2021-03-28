@@ -24,7 +24,7 @@ import { useDispatch , useSelector} from 'react-redux'
 import {deleteRecipeAction} from '../Actions/recipeAction'
 import {FacebookShareButton , WhatsappShareButton,WhatsappIcon, FacebookIcon} from 'react-share'
 import HelmetMetaData from "./Helemt";
-
+import Rating from './rating'
 
 const useStyles = makeStyles((theme) => ({
   
@@ -55,10 +55,11 @@ const useStyles = makeStyles((theme) => ({
 
 const RecipeReviewCard  = (props,history) => { 
 
-  const auth = useSelector((state) => state.auth)
-  const {user} = auth
+  const userLogin = useSelector((state) => state.userLogin)
+  const {userInfo } = userLogin
 
 
+ 
   const [anchorEl, setAnchorEl] = useState('')
   const [userMenu , setUserMenu] =useState(true)
 
@@ -73,10 +74,10 @@ const RecipeReviewCard  = (props,history) => {
 
   
   
-  const handleDelete = (recipe,history) => {
+  const handleDelete = (recipe) => {
     dispatch(deleteRecipeAction( recipe))
     console.log(recipe)
-    history.pushState('/list')
+    history.push('/list')
   }
 
   var link = props.image;
@@ -93,8 +94,8 @@ if(link){
 
 
 <React.Fragment> 
-<meta property="og:image" content={`http://192.168.1.21:5000/api/${link}`}> </meta>
-    <meta property="og:image:secure_url" content={`http://192.168.1.21:5000/api/${link}`}> </meta>
+<meta property="og:image" content={`http://127.0.0.1:5000/api/${link}`}> </meta>
+    <meta property="og:image:secure_url" content={`http://127.0.0.1:5000/api/${link}`}> </meta>
 </React.Fragment>
 
 return (
@@ -121,8 +122,7 @@ return (
           </IconButton>
           </Button>
           { 
-      
-         props.user == user.name ? 
+         userInfo && props.user._id == userInfo._id ? 
 
 < Menu
 id="simple-menu"
@@ -162,20 +162,22 @@ onClose={handleClose}
         }
         title={<b> {props.name}</b>}
         subheader={props.date}
-        
+subheader = {          <Rating value = {props.rating} text= {`${props.numReviews} reviews`} /> 
+}
       />
-      
+
       <CardContent>
         <Typography  id = "typ" variant="body2" color="textSecondary" component="p">
           {props.description}
-      
+
+
 
         </Typography>
       </CardContent>
      
       <CardMedia
         className={classes.media}
-         image={`http://192.168.1.21:5000/api/${link}`}
+         image={`http://127.0.0.1:5000/api/${link}`}
         title={props.name}
       />
       <CardActions disableSpacing>
@@ -185,9 +187,10 @@ onClose={handleClose}
 
         <IconButton aria-label="sharewh">
         <WhatsappShareButton
-   
+         title={props.title}
         url={`http://192.168.1.21:3000/list/${props.id}`}
-        title={props.title}>
+  
+        separator >
           <WhatsappIcon size={22}/>
      
         </WhatsappShareButton>
@@ -200,19 +203,19 @@ onClose={handleClose}
 
 title={props.title}
 description={props.description}
-image={`http://192.168.1.21:5000/api/${link}`} >
+image={`http://127.0.0.1:5000/api/${link}`} >
 </HelmetMetaData>
         <FacebookShareButton 
                 url={`http://192.168.1.21:3000/list/${props.id}`}
                 quote={`${props.name}`}
-                image={`http://192.168.1.21:5000/api/${link}`}
+                image={`http://127.0.0.1:5000/api/${link}`}
                 className={classes.socialMediaButton}>
                  <FacebookIcon size={22} />
               </FacebookShareButton>
 
         </IconButton>
         <Typography paragraph id="user-p">
-            {props.user}
+            {props.user.name}
           </Typography>
         <IconButton
           className={clsx(classes.expand, {

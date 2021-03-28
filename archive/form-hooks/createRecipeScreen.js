@@ -62,12 +62,13 @@ const config = {
     }
 }
 
-const { data } = await axios.post('http://192.168.1.21:5000/api/uploads' , formData , config)
+const { data } = await axios.post('http://127.0.0.1:5000/api/uploads' , formData , config)
 
 setImage(data)
 setUploading(false)
 } catch { 
-    console.error(error)
+    console.error("error uploading pic"
+    )
 
 setUploading(false)
 }

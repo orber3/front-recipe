@@ -4,6 +4,7 @@ import {MY_RECIPE_LIST_REQUEST ,MY_RECIPE_LIST_SUCCESS , MY_RECIPE_LIST_FAIL} fr
 import {GET_RECIPE_REQUEST ,GET_RECIPE_SUCCESS , GET_RECIPE_FAIL} from '../Constants/recipeConstants'
 import {EDIT_RECIPE_REQUEST ,EDIT_RECIPE_SUCCESS , EDIT_RECIPE_FAIL} from '../Constants/recipeConstants'
 import {DELETE_RECIPE_REQUEST ,DELETE_RECIPE_SUCCESS , DELETE_RECIPE_FAIL} from '../Constants/recipeConstants'
+import {RECIPE_CREATE_REVIEW_REQUEST , RECIPE_CREATE_REVIEW_SUCCESS, RECIPE_CREATE_REVIEW_FAIL} from '../Constants/recipeConstants'
 
 
 
@@ -168,3 +169,59 @@ export const recipeDeleteReducer = ( state = {} , action ) => {
     }
     
     }
+ 
+    export const savePicReducer = (state = {picLink: []},  action) => { 
+        switch(action.type) { 
+
+        case 'SAVE_RECIPE_REQUEST':
+            return {
+                loading: true, 
+            }
+            case 'SAVE_PIC_SUCCESS':
+            return { 
+                loading: false,
+                success: true,
+                picLink: action.payload
+    
+            }
+            case 'SAVE_PIC_FAIL':
+                return { 
+                    loading: false , 
+                    success: false,
+
+                    error: action.payload
+                }
+                
+        default:
+            return state
+    
+    }
+}
+
+
+
+
+export const RecipeCreateReviewReducer = ( state = {} , action ) => { 
+
+    switch(action.type) { 
+    
+        case RECIPE_CREATE_REVIEW_REQUEST:
+        return { loading: true , ...state }
+        
+        case RECIPE_CREATE_REVIEW_SUCCESS:
+        return { loading: false , success: true }
+    
+        case RECIPE_CREATE_REVIEW_FAIL:
+        return { loading: false , error: action.payload }
+    
+        // case RECIPE_CREATE_REVIEW_RESET:
+        // return {}
+    
+        default:
+            return state
+    
+    
+    }
+    
+    }
+

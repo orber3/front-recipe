@@ -9,7 +9,7 @@
 #app-container {
     width: 100%;
     margin: 0px;
-    margin-left: 7px;
+    margin-left: 4%;
 }
 #root { 
     height: auto;
@@ -24,41 +24,36 @@
 
 }
 html, body { 
-    background: rgb(241, 236, 212);
-    background: linear-gradient(62deg, rgba(248, 245, 230, 0.911) 0%, rgb(255, 252, 240) 100%);    height: auto;
+    background: rgb(241, 240, 234);
+    background: linear-gradient(62deg, rgba(255, 255, 255, 0.911) 0%, rgb(252, 251, 246) 100%);    height: auto;
     /* display: flexbox; */
 }
-.makeStyles-root-1 { 
-     background: rgb(241, 236, 212);
-    background: linear-gradient(62deg, rgba(248, 245, 230, 0.911) 0%, rgb(255, 252, 240) 100%);    height: auto;
-}
-.MuiGrid-container { 
-    background: rgb(241, 236, 212);
-    background: linear-gradient(62deg, rgba(248, 245, 230, 0.911) 0%, rgb(255, 252, 240) 100%);    height: auto;
-}
-/* HEADER ???????????????????? */
-/* header { 
-background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)) , url("../src/PICS/hero.jpg");
-height: 40vh;
-background-size: cover;
-background-position: center;
-background-attachment: fixed;
+/* 
+.MuiGrid-container
+ {
+     background: rgb(235, 235, 233);
+     height: auto;
+     border-radius: 2%;
+     margin-bottom: 12px;
+    
 } */
 
+.MuiAppBar-colorPrimary	{
+
+   color: black  !important;
+   background: rgb(238, 236, 230) !important; 
+
+}
 .bg-dark {
    border-radius: 130px;
-   box-shadow: 0 2px 2px rgb(143, 141, 141);
+   box-shadow: 0 2px 2px rgb(187, 181, 181);
 }
 .navbar-collapse { 
-    justify-content: flex-end;
+    justify-content: space-between;
     font-size: 120%;
+    color:blanchedalmond;
 }
-.a.nav-link {
-    color: white;
-}
-#basic-navbar-nav {
-    color: white;
-}
+
 #login-btn { 
     float: left;
     color: rgba(184, 174, 174, 0.918);
@@ -66,25 +61,66 @@ background-attachment: fixed;
     margin-right: auto;
 
 } 
+.bg-light { 
+    background-color: rgba(170, 165, 165, 0.993) !important;
+}
 header { 
-    padding-bottom: 40px;
+    padding-bottom: 20px;
     margin-bottom: 40px;
 }
-
+#left-nav { 
+    justify-content: start;
+}
 
 
 /* forms ********************* */
+/* 
+.formContainer { 
 
-.form-control { 
-    background: rgb(236, 232, 215);
-    background: linear-gradient(62deg, rgba(240, 237, 225, 0.903) 0%, rgb(230, 224, 202) 100%); 
+    background: rgba(228, 228, 221, 0.884);
+    height: auto;
+    border-radius: 2%;
+    margin-bottom: 12px;
 
-}
+
+} */
+
+
+
+
+
 .form-group { 
+    width: 100%;
     padding-top: 20px;
+    margin-left: 25px;
+}
+#formGrid { 
+    margin-left: 25px;
+}
+#name { 
+    width: 55%;
+}
+#ingridents {
+    width: 55%;
+}
+#description { 
+    width: 65%;
+}
+#formIng { 
+    width: 25%;
+}
+#cookingTime { 
+    width: 35%;
+}
+#formPic { 
+    width: 55%
 }
 
-
+#masterForm { 
+    width: 100%;
+    height: 220px;
+margin-bottom: 30px;
+}
 
 /* ************CARD */
 
@@ -112,10 +148,10 @@ header {
 
     /* heart color */
 
-
+/* 
 .MuiIconButton-label { 
     color: red;
-}
+} */
 
 
 .MuiIconButton-label:hover { 
@@ -138,7 +174,7 @@ header {
 /* ****************show singlerecipe***** */
 /* clock */
 #ns {  background: rgb(241, 236, 212);
-    background: linear-gradient(62deg, rgba(248, 245, 230, 0.911) 0%, rgb(255, 252, 240) 100%);    height: auto;
+    background: linear-gradient(62deg, rgba(236, 236, 233, 0.911) 0%, rgb(252, 251, 246) 100%);    height: auto;
 }
 
 
@@ -147,16 +183,24 @@ header {
     white-space: pre;
     font-size: 200%;
     font-weight: 500;
-    font-family:  sans-serif
+    font-family: sans-serif;
 }
-
+#first-paper { 
+    padding-top: 0px !important;
+    margin-top: 0px;
+    height:fit-content;
+}
 #ingCon { 
     margin-top: 9px ;
     margin-bottom: 9px;
+    margin-left: 19px;
+    width: max-content;
 }
 
 #photoCon { 
-    margin-top: 9px ;
+    justify-content: center !important;
+
+    margin-top: 6px ;
 margin-right: 10px;
 
 }
@@ -169,5 +213,27 @@ img {
 
 }
 img:hover { 
-    transform: scale(2.0);
+    transform: scale(1.6);
 }
+
+
+/*  register Form  ***** */
+
+#registerItem { 
+    justify-content: center !important;
+
+
+}
+#RegisterButton { 
+    padding-bottom: 30px;
+    padding-top: 30px;
+    justify-content: center !important;
+
+}
+
+#mainReview { 
+    justify-content: center !important;
+    white-space: pre;
+
+}
+

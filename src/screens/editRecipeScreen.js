@@ -24,8 +24,11 @@ const EditRecipeScreen = ({match , history}) => {
 
 
     const auth = useSelector((state) => state.auth)
-    const {user} = auth;
-    const {email} = user;
+
+    const userLogin = useSelector((state) => state.userLogin)
+    const {userInfo , loading: loadingUser , error: errorUser} = userLogin   
+
+    const {email} = userInfo;
     const dispatch = useDispatch()
     const date = new Date().toLocaleDateString();
 
@@ -78,7 +81,7 @@ const config = {
     }
 }
 
-const { data } = await axios.post('http://192.168.1.21:5000/api/uploads' , formData , config)
+const { data } = await axios.post('http://127.0.0.1:5000/api/uploads' , formData , config)
 
 setImage(data)
 setUploading(false)
@@ -102,13 +105,16 @@ setUploading(false)
 const submitHandler =(e) => { 
     e.preventDefault()
 
-    if(user.length==0){
+    if(userInfo.length==0){
       history.push('/')
     }
     console.log(id)
-    console.log(user)
-     dispatch(editRecipeAction({ id, user, name ,description , ingredients , cookingTime,directions,catagory,date, image}))
-     history.push(`/recipe/${id}`)
+    console.log(userInfo)
+     dispatch(editRecipeAction({ id, name ,description , ingredients , cookingTime,directions,catagory,date, image}))
+     setTimeout(() => {
+      history.push(`/recipe/${id}`)
+
+     }, 1200);
     }
     
 
@@ -116,7 +122,7 @@ return (
    
 <> 
 { loading ? <Loader /> : error ? <Message variant='danger'> {error} </Message>
-            :  (user.length) == 0 ? 
+            :  (userInfo.length) == 0 ? 
             <Message variant='danger'>
           Please Login
             </Message>  
@@ -125,7 +131,7 @@ return (
             
             (
                 <>
-  <Message variant='primary'>hey, {user.name }
+  <Message variant='primary'>hey, {userInfo.name }
                {"" } please submit your recipe. </Message>
           
 

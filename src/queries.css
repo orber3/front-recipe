@@ -36,6 +36,23 @@
         justify-content: space-evenly  !important ;
         align-items: flex-start !important ; 
     }
+/* forms */
+
+.form-group { 
+
+    display: flex;
+    flex-wrap: wrap !important;
+    flex-flow: column wrap;
+    margin-right: 35px;
+
+
+}
+#formGrid { 
+        margin-right: 35px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: column wrap;
+}
 }
 
 

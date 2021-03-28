@@ -1,5 +1,5 @@
 import React,{useEffect} from 'react'
-import { Table ,Button,Row,Col, CardGroup , Card, ListGroup, ListGroupItem, Image} from 'react-bootstrap'
+import Button from '@material-ui/core/Button';
 import {LinkContainer} from 'react-router-bootstrap'
 import Loader from '../components/Loader'
 // import Message from '../component/Message'
@@ -14,8 +14,11 @@ import { Typography } from '@material-ui/core'
 import Divider from '@material-ui/core/Divider';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import ReactImageAppear from 'react-image-appear';
+import ReviewModal from '../components/ReviewModal'
+import {Row , Col, ListGroup, ListGroupItem , Card  , Image , Form} from 'react-bootstrap'
+import Rating from '../components/rating'
 
-
+import Message from '../components/Message'
 
 
 
@@ -26,14 +29,11 @@ const GetRecipeScreen = ({history,match}) => {
     const classes = useStyles();
     const dispatch = useDispatch()
 
-    const auth = useSelector((state) => state.auth)
-    const {user} = auth
 
     useEffect(() => {
       dispatch(getRecipd(match.params.id))
 
     }, [dispatch, match])
-
 
 
 
@@ -43,10 +43,11 @@ const GetRecipeScreen = ({history,match}) => {
     const getRecipe = useSelector(state => state.getRecipe)
     const {loading , error ,recipe} = getRecipe
 
-
+    const recipeId= recipe._id
     return (
         <>
-          {loading ? <Loader /> :
+          {
+          loading ? <Loader /> :
             <div className={classes.root}> 
 <Grid class ="main" container   justify="space-around"  spacing={2}>
 
@@ -106,7 +107,7 @@ elevation={0.5}
               <Grid item id ="photo" >
 
               <ReactImageAppear  id ="photo"
-    src={`http://192.168.1.21:5000/api/${recipe.image}`}
+    src={`http://127.0.0.1:5000/api/${recipe.image}`}
 />
                       </Grid>
 
@@ -157,7 +158,11 @@ elevation={0.5}
               
               <Grid item  xs={2}>
                 <Typography id="ShowData">
-              
+                <br></br>
+
+                
+                {console.log(recipe)}
+
                 {recipe.description} 
                    
                 </Typography>
@@ -182,12 +187,13 @@ elevation={0.5}
               
               <Grid item xs={2}>
               <Typography     id="ShowData">
+              <br></br>
+
               {recipe.directions}
                 </Typography>
 
               </Grid>
               </Grid>
-              <Divider className={classes.divider} />
 
             </Grid>
 
@@ -195,16 +201,91 @@ elevation={0.5}
 
 
 
+            <Grid
+  container
+  direction="row"
+  justify="flex-end"
+  alignItems="center"
+>
 
+            <Button variant="contained" color="primary" >
+<ReviewModal recipeId={recipe._id} />
+              </Button>
 
+              </Grid>
           </Paper>
+          
+
         </Grid>
+<Grid> 
+<Paper> 
+
+  </Paper>
+  </Grid>
 
 
+
+  <Grid> 
+<Paper>
+   <Grid
+  container
+  direction="row"
+  justify="center"
+  alignItems="center"
+>
+
+
+<h2> Reviews</h2>   
+</Grid>  
+
+
+  {recipe.reviews?
+    <Grid Item xs={12}>
+{recipe.reviews.length == 0 && <Message> no reviews</Message>
+}<ListGroup>
+    {recipe.reviews.map(review => (
+           <ListGroup.Item key = {review.id} > 
+           <strong> {review.name} </strong>
+           <Rating value= {review.rating} /> 
+           <p> {review.createdAt.substring(0,10)} </p>
+           <p> {review.comment} </p>
+           </ListGroup.Item>
+
+    ))}
+    </ListGroup>
+    </Grid>
+
+
+: 
+ console.log('waiting')
+}
+{/* 
+<Grid Item xs={12}>
+                                 {recipe.reviews.length == 0 && <Message> no reviews</Message>}
+                                 <ListGroup>
+                                     {recipe.reviews.map(review => (
+                                            <ListGroup.Item key = {review.id} > 
+                                            <strong> {review.name} </strong>
+                                            <Rating value= {review.rating} /> 
+                                            <p> {review.createdAt.substring(0,10)} </p>
+                                            <p> {review.comment} </p>
+                                            </ListGroup.Item>
+
+                                     ))}
+                                     </ListGroup>
+                                     </Grid> */}
+
+  </Paper>
+  </Grid>
 
 
       </Grid>
-     </div> }
+
+
+     </div>
+
+
+                                     }
 
 </>
 

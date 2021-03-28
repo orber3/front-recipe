@@ -1,60 +1,63 @@
 import React from 'react'
+import StarIcon from '@material-ui/icons/Star';
+import StarBorderIcon from '@material-ui/icons/StarBorder';
+import StarHalfIcon from '@material-ui/icons/StarHalf';
 
-const Rating = ({value , text,color}) => {
+const Rating = ({value , text,}) => {
+    const color = 'yellow'
+    console.log(value)
     return (
-        <div className = 'rating'>
-            <span> 
-                <i style = {{color}} className = {value >= 1 
-                ? 'fas fa-star'
+
+<div> 
+<span> 
+             {value  >= 1 
+                ? <StarIcon style={{color: 'yellow'}} />
                 : value >= 0.5 
-                 ?'fas fa-star-half-alt'
-                  :'far fa-star'
-                 } >
-                </i>
+                 ?<StarHalfIcon />
+                  :<StarBorderIcon />
+                 } 
+
             </span>
             <span> 
-                <i style = {{color}} className = {value >= 2 
-                ? 'fas fa-star'
+                {value >= 2 
+                ? <StarIcon style={{color: 'yellow'}} />
                 : value >= 1.5 
-                 ?'fas fa-star-half-alt'
-                  :'far fa-star'
-                 } >
-                </i>
+                 ?<StarHalfIcon />
+                  :<StarBorderIcon />
+                 } 
+             
             </span>
             <span> 
-                <i style = {{color}} className = {value >= 3 
-                ? 'fas fa-star'
+             {value >= 3 
+                ? <StarIcon style={{color: 'yellow'}} />
                 : value >= 2.5 
-                 ?'fas fa-star-half-alt'
-                  :'far fa-star'
-                 } >
-                </i>
+                 ?<StarHalfIcon />
+                  :<StarBorderIcon />
+                 } 
             </span>
             <span> 
-            <i style = {{color}}
-          className={
+          {
             value >= 4
-              ? 'fas fa-star'
+              ? <StarIcon style={{color: 'yellow'}} />
               : value >= 3.5
-              ? 'fas fa-star-half-alt'
-              : 'far fa-star'
+              ? <StarHalfIcon />
+              : <StarBorderIcon />
           }
-        ></i>
             </span>
             <span> 
-                <i  style = {{color}} className = {value >= 5 
-                ? 'fas fa-star'
+               {value >= 5 
+                ? <StarIcon style={{color: 'yellow'}} />
                 : value >= 4.5 
-                 ?'fas fa-star-half-alt'
-                  :'far fa-star'
-                 } >
-                </i>
+                 ?<StarHalfIcon />
+                  :<StarBorderIcon />
+                 } 
             </span>
             <span>
                 {text && text}
                 </span>
-        </div>
-    )
+                
+                </div>  
+                  )
 }
 
 export default Rating

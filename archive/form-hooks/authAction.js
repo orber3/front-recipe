@@ -17,7 +17,7 @@ export const signIn = ( user) => async (dispatch) =>  {
             },
         }
   
-            const {data } = await axios.post(`http://192.168.1.21:5000/api/users` ,{user: user} , config)
+            const {data } = await axios.post(`http://127.0.0.1:5000/api/users` ,{user: user} , config)
   
             dispatch({ 
                 type:  USER_LOGIN_SUCCESS,

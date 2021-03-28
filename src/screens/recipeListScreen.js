@@ -18,11 +18,10 @@ const RecipeListScreen = ({history,match}) => {
 
     const classes = useStyles();
     const dispatch = useDispatch()
+
     const allRecipes = useSelector(state => state.allRecipes)
     const{loading , error , recipes} = allRecipes
 
-    const auth = useSelector((state) => state.auth)
-    const {user} = auth
 
     useEffect(() => {
         dispatch(listAllRecipes())
@@ -42,7 +41,7 @@ const RecipeListScreen = ({history,match}) => {
         <Grid key = {recipe._id} item  >
           <Paper  className={classes.paper}>
 
-          <RecipeReviewCard id={recipe._id}cookingTime={recipe.cookingTime} name = {recipe.name} user={recipe.user[0].name } ingredients={recipe.ingredients} description = {recipe.description} directions={recipe.directions} date={recipe.date}  image={recipe.image} />
+          <RecipeReviewCard id={recipe._id}cookingTime={recipe.cookingTime} name = {recipe.name} user={recipe.user} ingredients={recipe.ingredients} description = {recipe.description} directions={recipe.directions} date={recipe.date}  image={recipe.image} rating={recipe.rating} numReviews={recipe.numReviews} />
 
           </Paper>
           
