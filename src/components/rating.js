@@ -4,8 +4,6 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
 import StarHalfIcon from '@material-ui/icons/StarHalf';
 
 const Rating = ({value , text,}) => {
-    const color = 'yellow'
-    console.log(value)
     return (
 
 <div> 
@@ -25,7 +23,6 @@ const Rating = ({value , text,}) => {
                  ?<StarHalfIcon />
                   :<StarBorderIcon />
                  } 
-             
             </span>
             <span> 
              {value >= 3 

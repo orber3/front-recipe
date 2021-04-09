@@ -5,7 +5,7 @@ import Loader from '../components/Loader'
 // import Message from '../component/Message'
 import { useDispatch , useSelector} from 'react-redux'
 import {listAllRecipes} from '../Actions/recipeAction'
-import RecipeReviewCard from '../components/recipeCard'
+import RecipeReviewCard from '../components/RecipeCard'
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -21,7 +21,7 @@ const RecipeListScreen = ({history,match}) => {
 
     const allRecipes = useSelector(state => state.allRecipes)
     const{loading , error , recipes} = allRecipes
-
+console.log(allRecipes)
 
     useEffect(() => {
         dispatch(listAllRecipes())
@@ -33,7 +33,7 @@ const RecipeListScreen = ({history,match}) => {
           {loading ? <Loader /> :
             <div className={classes.root}> 
 <Grid   container  id="listgrid" spacing={2}>
-<Grid item lg={12}>
+<Grid data-test="listGrid" item lg={12}>
 <Grid container  justify="center" spacing={2}>
 
 {recipes.map(recipe => (  

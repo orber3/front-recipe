@@ -44,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
         <Controller
       as={TextField}
       name={'recipeName'}
+      defaultValue={'recipeName'}
       control={control}
       margin="normal"
       className={classes.textField}
@@ -63,6 +64,7 @@ const useStyles = makeStyles((theme) => ({
   <Controller
       as={TextField}
       name={'Description'}
+      defaultValue={'Description'}
       control={control}
       margin="normal"
       className={classes.textField}

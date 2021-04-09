@@ -7,10 +7,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import {loginUser} from '../Actions/userAction'
 import { useDispatch , useSelector} from 'react-redux'
-import Message from '../components/Message'
+import Message from './Message'
 import { ErrorMessage } from '@hookform/error-message';
 import { red } from '@material-ui/core/colors';
-
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -73,7 +72,7 @@ const defaultValues = {
 
     <Grid id = "registerForm"  
 container spacing={2}>
-      <Grid item container id="registerItem" justify='flex-center' lg={12} md={12} sm={12}>
+      <Grid item container id="registerItem" justify='center' lg={12} md={12} sm={12}>
 
 <Controller
   as={TextField}

@@ -5,7 +5,7 @@ import Loader from '../components/Loader'
 // import Message from '../component/Message'
 import { useDispatch , useSelector} from 'react-redux'
 import {getRecipd} from '../Actions/recipeAction'
-import RecipeReviewCard from '../components/recipeCard'
+import RecipeReviewCard from '../components/RecipeCard'
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -15,7 +15,6 @@ import Divider from '@material-ui/core/Divider';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import ReactImageAppear from 'react-image-appear';
 import ReviewModal from '../components/ReviewModal'
-import {Row , Col, ListGroup, ListGroupItem , Card  , Image , Form} from 'react-bootstrap'
 import Rating from '../components/rating'
 
 import Message from '../components/Message'
@@ -49,7 +48,7 @@ const GetRecipeScreen = ({history,match}) => {
           {
           loading ? <Loader /> :
             <div className={classes.root}> 
-<Grid class ="main" container   justify="space-around"  spacing={2}>
+<Grid >
 
 
 
@@ -61,7 +60,7 @@ const GetRecipeScreen = ({history,match}) => {
 
 {/* recipe name */}
 <Paper className={classes.paper}
-elevation={0.5}
+elevation={0}
 >
 <Grid
   container
@@ -77,12 +76,12 @@ elevation={0.5}
 
 {/* clock -how much time */}
   <Grid container justify="flex-end" spacing={0} > 
-<Grid item xs={0}>
+<Grid item xs={1}>
 <Paper elevation={0}  id="ns" square className={classes.paper}>
 <>     
-          <AccessTimeIcon  fontSize="8px" />
+          <AccessTimeIcon  fontSize="inherit" />
       <br></br>
-      <Typography fontSize="8px">{recipe.cookingTime}
+      <Typography fontSize="inherit">{recipe.cookingTime}
  </Typography>
 </>  
   </Paper>
@@ -161,7 +160,6 @@ elevation={0.5}
                 <br></br>
 
                 
-                {console.log(recipe)}
 
                 {recipe.description} 
                    
@@ -208,9 +206,9 @@ elevation={0.5}
   alignItems="center"
 >
 
-            <Button variant="contained" color="primary" >
+          <>
 <ReviewModal recipeId={recipe._id} />
-              </Button>
+         </>
 
               </Grid>
           </Paper>
@@ -240,19 +238,22 @@ elevation={0.5}
 
 
   {recipe.reviews?
-    <Grid Item xs={12}>
+    <Grid item xs={12}>
 {recipe.reviews.length == 0 && <Message> no reviews</Message>
-}<ListGroup>
+}
+<Grid>
     {recipe.reviews.map(review => (
-           <ListGroup.Item key = {review.id} > 
+           <Grid item key = {`${review._id}`} > 
            <strong> {review.name} </strong>
            <Rating value= {review.rating} /> 
            <p> {review.createdAt.substring(0,10)} </p>
            <p> {review.comment} </p>
-           </ListGroup.Item>
+           <Divider className={classes.divider} />
+
+           </Grid>
 
     ))}
-    </ListGroup>
+    </Grid>
     </Grid>
 
 

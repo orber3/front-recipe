@@ -62,6 +62,7 @@ useEffect(() => {
       className={classes.textField}
           id="outlined-textarea"
           label="Recipe Ingridents"
+          defaultValue={'Ingridents'}
           multiline
           style={{width: '40ch'}}
           variant="outlined"
@@ -84,6 +85,8 @@ useEffect(() => {
           label=" Cooking Time"
           placeholder=""
           multiline
+          defaultValue={'10 mins'}
+
           variant="outlined"
           ref={register({ required: true, min: 2 })}
 
@@ -98,8 +101,11 @@ Choose Catagory    </InputLabel>
     <Controller
     control={control}
     name="catagoryy"
+    defaultValue={'Asian'}
+
     as={
-      <Select id="catagory-select" onChange={e => register({ name: 'catagory', value: e.target.value })}>
+      <Select id="catagory-select"
+onChange={e => register({ name: 'catagory', value: e.target.value })}>
           {catagories.map((catagory) => (
                   <MenuItem key={catagory.value} value={catagory.value}>
                         {catagory.text}

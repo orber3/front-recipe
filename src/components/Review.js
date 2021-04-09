@@ -51,7 +51,7 @@ const defaultValues = {
     comment: ""
   };
 
- const Review = (recipeId)=> {
+ const Review = (recipeId,handleClose)=> {
      
   const classes = useStyles();
   const { handleSubmit, reset, watch, control ,register , errors} = useForm({ defaultValues });
@@ -60,7 +60,11 @@ const defaultValues = {
 const rId=recipeId.recipeId
   const userLogin = useSelector((state) => state.userLogin)
   const {userInfo , loading , error} = userLogin
+
+  const recipeReviewCreate = useSelector((state) => state.recipeReviewCreate)
+  const {success,  error: reviewError} = recipeReviewCreate
   
+
 
 
   const onSubmit = (data) => { 
@@ -68,7 +72,8 @@ const rId=recipeId.recipeId
     const { rating , comment} = data
 
     dispatch(createRecipeReview({rating,comment,rId}))
-  }
+    // handleClose()
+    }
 
 
   return (
@@ -80,14 +85,15 @@ const rId=recipeId.recipeId
         
         }
 
-      {error ?   <Message variant='danger'> {error} </Message> :   "" }
+      {reviewError ?   <Message variant='danger'> {reviewError} </Message> :   "" }
+
      <form onSubmit={handleSubmit(onSubmit)}>
      <Paper> 
      <ThemeProvider >
 
     <Grid id = "registerForm"  
 container spacing={3}>
-      <Grid item container id="registerItem" justify='flex-center' lg={12} md={12} sm={12}>
+      <Grid item container id="registerItem" justify='center' lg={12} md={12} sm={12}>
 
 <Controller
   as={TextField}

@@ -23,7 +23,6 @@ import {Link} from 'react-router-dom'
 import { useDispatch , useSelector} from 'react-redux'
 import {deleteRecipeAction} from '../Actions/recipeAction'
 import {FacebookShareButton , WhatsappShareButton,WhatsappIcon, FacebookIcon} from 'react-share'
-import HelmetMetaData from "./Helemt";
 import Rating from './rating'
 
 const useStyles = makeStyles((theme) => ({
@@ -76,7 +75,6 @@ const RecipeReviewCard  = (props,history) => {
   
   const handleDelete = (recipe) => {
     dispatch(deleteRecipeAction( recipe))
-    console.log(recipe)
     history.push('/list')
   }
 
@@ -104,7 +102,7 @@ return (
 
 
     <Card className={classes.root}>
-      <CardHeader
+      <CardHeader data-test="card-header" 
         avatar={   
           <>     
           <AccessTimeIcon  fontSize="small" />
@@ -117,14 +115,17 @@ return (
           <>
           <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
 
-          <IconButton aria-label="settings">
+          {/* <IconButton aria-label="settings"> */}
             <MoreVertIcon />
-          </IconButton>
+          {/* </IconButton> */}
           </Button>
           { 
          userInfo && props.user._id == userInfo._id ? 
 
-< Menu
+< Menu 
+
+
+title="menuButton"
 id="simple-menu"
 anchorEl={anchorEl}
 keepMounted
@@ -156,6 +157,8 @@ onClose={handleClose}
  
 </Menu>
         }
+
+
       
 
           </>
@@ -166,12 +169,9 @@ subheader = {          <Rating value = {props.rating} text= {`${props.numReviews
 }
       />
 
-      <CardContent>
-        <Typography  id = "typ" variant="body2" color="textSecondary" component="p">
+      <CardContent     >
+        <Typography  data-test="card-desc" id = "typ" variant="body2" color="textSecondary" component="p">
           {props.description}
-
-
-
         </Typography>
       </CardContent>
      
@@ -185,26 +185,20 @@ subheader = {          <Rating value = {props.rating} text= {`${props.numReviews
           <FavoriteIcon />
         </IconButton>
 
-        <IconButton aria-label="sharewh">
-        <WhatsappShareButton
+        {/* <IconButton aria-label="sharewh"> */}
+        <WhatsappShareButton 
          title={props.title}
         url={`http://192.168.1.21:3000/list/${props.id}`}
-  
+        data-test="card-whatsup"
         separator >
           <WhatsappIcon size={22}/>
      
-        </WhatsappShareButton>
-        </IconButton>
+        </WhatsappShareButton >
+        {/* </IconButton> */}
 
 
-        <IconButton aria-label="share">
-          
-<HelmetMetaData
-
-title={props.title}
-description={props.description}
-image={`http://127.0.0.1:5000/api/${link}`} >
-</HelmetMetaData>
+        {/* <IconButton aria-label="share"> */}
+     
         <FacebookShareButton 
                 url={`http://192.168.1.21:3000/list/${props.id}`}
                 quote={`${props.name}`}
@@ -213,7 +207,7 @@ image={`http://127.0.0.1:5000/api/${link}`} >
                  <FacebookIcon size={22} />
               </FacebookShareButton>
 
-        </IconButton>
+        {/* </IconButton> */}
         <Typography paragraph id="user-p">
             {props.user.name}
           </Typography>
@@ -229,14 +223,15 @@ image={`http://127.0.0.1:5000/api/${link}`} >
         </IconButton>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
+        <CardContent data-test="card-directions">
         <Typography paragraph>Ingredients:</Typography>
         <Typography  id = "typ"  paragraph>{props.ingredients}
           </Typography>
 
           <Typography paragraph>Method:</Typography>
           
-          <Typography  id = "typ" paragraph>{props.directions}
+          <Typography          
+id = "typ" paragraph>{props.directions}
           </Typography>
 
         </CardContent>

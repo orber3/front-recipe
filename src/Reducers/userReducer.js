@@ -25,7 +25,10 @@ export const userRegisterReducer = ( state= {} , action) => {
 }
 
 
-export const UserLoginReducer = ( state = {}, action) => { 
+export const initialState = {
+  loading: false
+}
+export const UserLoginReducer = ( state = initialState, action) => { 
 
     switch(action.type) { 
 

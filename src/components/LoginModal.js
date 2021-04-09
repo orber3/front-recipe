@@ -2,18 +2,13 @@
 
 
 import React from 'react'
-import { useDispatch , useSelector} from 'react-redux'
-import { useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
-
-
-
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import { Button } from '@material-ui/core';
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
-import Login from './login'
+import Login from './Login'
 import { green, red } from '@material-ui/core/colors';
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -52,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     return (
   <> 
   
-  <Button  onClick={handleOpen} color="default" >
+  <Button  onClick={handleOpen} id="loginButton" color="default" >
   <PermIdentityIcon  /> login
                 </Button>  
   
@@ -71,11 +66,11 @@ const useStyles = makeStyles((theme) => ({
       >
       <Fade in={open}>
             <div className={classes.paper}>
-              <p id="transition-modal-description">
+              <div id="transition-modal-description">
                 
               <Login />
   
-              </p>
+              </div>
             </div>
           </Fade>
       </Modal>

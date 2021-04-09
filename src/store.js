@@ -4,7 +4,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import {allRecipeReducer,addRecipeReducer,MyRecipeReducer,getRecipeReducer,editRecipeReducer, recipeDeleteReducer , savePicReducer ,RecipeCreateReviewReducer } from './Reducers/recipeReducer'
 import {userRegisterReducer,UserLoginReducer} from './Reducers/userReducer'
 
-const reducer = combineReducers({
+export  const reducer = combineReducers({
     allRecipes: allRecipeReducer,
     addRecipe: addRecipeReducer,
     myRecipes: MyRecipeReducer,

@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
     return (
   <> 
   
-  <Button  onClick={handleOpen} color="white" >
+  <Button  id='reviewButton' onClick={handleOpen} variant="contained" style={{background: "purple"}} color="inherit" >
   <InsertCommentIcon style={{color: 'white'}}  /> Review
                 </Button>  
   
@@ -69,11 +69,11 @@ const useStyles = makeStyles((theme) => ({
       >
       <Fade in={open}>
             <div className={classes.paper}>
-              <p id="transition-modal-description">
+              <div id="transition-modal-description">
                 
-              <Review recipeId={recipeId}/>
+              <Review recipeId={recipeId} handleClose={handleClose}/>
   
-              </p>
+              </div>
             </div>
           </Fade>
       </Modal>
