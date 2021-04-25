@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-import { Button } from '@material-ui/core';
+import { Button, Grid } from '@material-ui/core';
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import Login from './Login'
 import { green, red } from '@material-ui/core/colors';
@@ -45,8 +45,8 @@ const useStyles = makeStyles((theme) => ({
       
   
     return (
-  <> 
-  
+<Grid> 
+
   <Button  onClick={handleOpen} id="loginButton" color="default" >
   <PermIdentityIcon  /> login
                 </Button>  
@@ -74,7 +74,7 @@ const useStyles = makeStyles((theme) => ({
             </div>
           </Fade>
       </Modal>
-      </>
+      </Grid>  
     );
   }
   

@@ -32,7 +32,7 @@ console.log(allRecipes)
         <>
           {loading ? <Loader /> :
             <div className={classes.root}> 
-<Grid   container  id="listgrid" spacing={2}>
+<Grid   container style={{marginLeft: '7%'}} id="listgrid" spacing={2}>
 <Grid data-test="listGrid" item lg={12}>
 <Grid container  justify="center" spacing={2}>
 

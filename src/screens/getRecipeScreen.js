@@ -222,26 +222,30 @@ elevation={0}
   </Grid>
 
 
-
-  <Grid> 
-<Paper>
-   <Grid
-  container
-  direction="row"
-  justify="center"
-  alignItems="center"
->
+      </Grid>
 
 
-<h2> Reviews</h2>   
-</Grid>  
+              <Grid style={{marginBottom: '10px'}}>
+              <Paper className={classes.Paper}>
+                      <Grid
+          container
+          direction="row"
+          justify="center"
+          alignItems="center"
+               >
+
+        <h2> Reviews</h2>  
+
+       
+        </Grid>
+        
 
 
-  {recipe.reviews?
+        {recipe.reviews?
     <Grid item xs={12}>
 {recipe.reviews.length == 0 && <Message> no reviews</Message>
 }
-<Grid>
+<Grid style={{marginLeft: '10px'}}>
     {recipe.reviews.map(review => (
            <Grid item key = {`${review._id}`} > 
            <strong> {review.name} </strong>
@@ -260,27 +264,16 @@ elevation={0}
 : 
  console.log('waiting')
 }
-{/* 
-<Grid Item xs={12}>
-                                 {recipe.reviews.length == 0 && <Message> no reviews</Message>}
-                                 <ListGroup>
-                                     {recipe.reviews.map(review => (
-                                            <ListGroup.Item key = {review.id} > 
-                                            <strong> {review.name} </strong>
-                                            <Rating value= {review.rating} /> 
-                                            <p> {review.createdAt.substring(0,10)} </p>
-                                            <p> {review.comment} </p>
-                                            </ListGroup.Item>
-
-                                     ))}
-                                     </ListGroup>
-                                     </Grid> */}
-
-  </Paper>
-  </Grid>
 
 
-      </Grid>
+
+
+
+            </Paper>
+              </Grid>
+
+
+
 
 
      </div>

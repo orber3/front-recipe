@@ -24,6 +24,7 @@ import { useDispatch , useSelector} from 'react-redux'
 import {deleteRecipeAction} from '../Actions/recipeAction'
 import {FacebookShareButton , WhatsappShareButton,WhatsappIcon, FacebookIcon} from 'react-share'
 import Rating from './rating'
+import ReviewModal from './ReviewModal';
 
 const useStyles = makeStyles((theme) => ({
   
@@ -60,7 +61,6 @@ const RecipeReviewCard  = (props,history) => {
 
  
   const [anchorEl, setAnchorEl] = useState('')
-  const [userMenu , setUserMenu] =useState(true)
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -182,6 +182,8 @@ subheader = {          <Rating value = {props.rating} text= {`${props.numReviews
       />
       <CardActions disableSpacing>
         <IconButton aria-label="add">
+        <ReviewModal recipeId={props.id}  />
+
           <FavoriteIcon />
         </IconButton>
 

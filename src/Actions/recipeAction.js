@@ -16,7 +16,13 @@ export const listAllRecipes = () => async (dispatch,getState) =>  {
         dispatch({ 
             type:  RECIPE_LIST_REQUEST,
         })
-        const {data } = await axios.get(`${BASE_URL}/api/recipe/r`)
+        const config = {
+            headers: {
+                'content-type': 'application/json'
+            },
+        }
+        const {data } = await axios.get(`${BASE_URL}/api/recipe/r`, )
+        console.log(data)
             dispatch({ 
                 type:  RECIPE_LIST_SUCCESS,
                 payload: data,

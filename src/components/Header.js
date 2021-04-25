@@ -1,104 +1,75 @@
+import { AppBar, Toolbar } from '@material-ui/core';
 import React from 'react'
+import HeaderModal from './HeaderModal'
+import {Link} from 'react-router-dom'
+import IconButton from '@material-ui/core/IconButton';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import Grid from '@material-ui/core/Grid';
 import { useDispatch , useSelector} from 'react-redux'
-import { useState,useEffect } from "react";
-
-import {Container, Nav , Navbar} from 'react-bootstrap'
-import {LinkContainer} from 'react-router-bootstrap'
-// import Google  from './Google';
-import { makeStyles } from '@material-ui/core/styles';
-import { Button } from '@material-ui/core';
-import {logoutUser} from '../Actions/userAction'
-import AddCircleIcon from '@material-ui/icons/AddCircle';
 import LoginModal from './LoginModal'
-import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 
-import { green, red } from '@material-ui/core/colors';
+import {logoutUser} from '../Actions/userAction'
+import {LinkContainer} from 'react-router-bootstrap'
 
-const useStyles = makeStyles((theme) => ({
- 
-  paper: {
-    backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-  },
-  logOut: { 
-     
-      color: green,
+import {StyledMenu ,StyledMenuItem,  useStyles} from './HeaderStyles'
+
+const Header = () => { 
+
+    const classes = useStyles();
+    const dispatch = useDispatch()
+
+    const userLogin = useSelector((state) => state.userLogin)
+    const {userInfo , loading , error} = userLogin
     
-  }
-}));
-
-
-
-const Header = () => {
-  const mediaQuery = window.matchMedia('(min-width: 992px)')
-  const classes = useStyles();
-
-  const dispatch = useDispatch()
-
-  const userLogin = useSelector((state) => state.userLogin)
-  const {userInfo , loading , error} = userLogin
-
-// useEffect(() => {
-// }, [userInfo])
-
   const handleLogOut = () => { 
-dispatch(logoutUser())
-  }
+    dispatch(logoutUser())
+      }
+      let name
+      userInfo ?
+       name=userInfo.name
+      : name="undefined"
+return (
+    <div className={classes.root}  data-test = "header-comp">
 
-    return (
-        <header className='header'>
-
-
-<Navbar  bg="light" variant= 'dark' expand="lg" collapseOnSelect >
-  <Container id="headerCon">
-  
-
-  <Navbar.Brand href="#home"> 
-  {/* <img src="../PICS/logo.jpg" alt="Recipe House" class="logo" />    */}
-Recipe-House
-  </Navbar.Brand>
-  <Navbar.Toggle aria-controls="basic-navbar-nav" />
-  <Navbar.Collapse id="basic-navbar-nav ">
-    
-    <Nav className="justify-content-start" id-="left-nav">
-      <LinkContainer to='/stepper'> 
-      <Nav.Link >NEW RECIPE       <AddCircleIcon style={{ color: '#b71c1c' }} />
-</Nav.Link>
-
-      </LinkContainer>
-
-
-      <Nav.Link href="/list"> ALL RECIPES</Nav.Link>
-      { userInfo ?
-         <Nav.Link href="/my"> My RECIPES</Nav.Link>
-: ""
-    }
-
-   </Nav>
-
-{ !userInfo ?
-<Nav id="register-btn justify-content-end">
-<LinkContainer to='/register'> 
-      <Nav.Link >register</Nav.Link>
-      </LinkContainer>
-     <LoginModal />
-</Nav>
-: 
-
-<Button onClick={handleLogOut}   style={{ color: '#b71c1c' }}  className={classes.logOut}
->
-<PermIdentityIcon  /> LogOut
-              </Button>  }
+    <AppBar style={{ 
+      position: "sticky",   color: 'primary'}} >
+      <Grid container style={{height: '20px' , width: '60px'}}> 
       
-      </Navbar.Collapse>
-      </Container>
-</Navbar>
+      <HeaderModal name={name} /> 
 
+      </Grid >
 
-</header>
-    )
+      {
+         !userInfo ?
+         <IconButton className={classes.user}
+         aria-label="account of current user"
+         aria-controls="menu-appbar"
+         aria-haspopup="true"
+         onClick={handleLogOut}
+                         color="inherit"
+         style={{marginBottom: '10px'}}
+       >
+<LoginModal name={name} />
+</IconButton>
+              :
+
+              <IconButton className={classes.user}
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleLogOut}
+                                color="inherit"
+                style={{marginBottom: '10px'}}
+              >
+                LogOut
+                <AccountCircle style={{color: 'red'}} onClick={handleLogOut}/>
+              </IconButton>
+              
+
+}
+          </AppBar>
+    </div>
+)
 }
 
 export default Header
