@@ -22,7 +22,6 @@ export const listAllRecipes = () => async (dispatch,getState) =>  {
             },
         }
         const {data } = await axios.get(`${BASE_URL}/api/recipe/r`, )
-        console.log(data)
             dispatch({ 
                 type:  RECIPE_LIST_SUCCESS,
                 payload: data,

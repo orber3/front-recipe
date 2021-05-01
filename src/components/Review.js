@@ -18,11 +18,11 @@ import {
     
   } from "@material-ui/core";
 
-//   const theme = createMuiTheme({
-//     palette: {
-//       type: "dark"
-//     }
-//   });
+  const theme = createMuiTheme({
+    palette: {
+      type: "dark"
+    }
+  });
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -58,12 +58,15 @@ const defaultValues = {
   const dispatch = useDispatch()
 
 const rId=recipeId.recipeId
-  const userLogin = useSelector((state) => state.userLogin)
-  const {userInfo , loading , error} = userLogin
 
   const recipeReviewCreate = useSelector((state) => state.recipeReviewCreate)
-  const {success,  error: reviewError} = recipeReviewCreate
+  const {  error: reviewError} = recipeReviewCreate
+  console.log(recipeReviewCreate)
   
+  const userLogin = useSelector((state) => state.userLogin)
+  const {userInfo , loading , error} = userLogin
+  
+  // console.log(state)
 
 
 
@@ -80,7 +83,7 @@ const rId=recipeId.recipeId
       <> 
 
           {  
-           errors.comment ? <span>  <Message variant='danger'> comment too short </Message> </span> : 
+           errors.comment ? <div data-test="message">  <Message variant='danger'> comment too short </Message> </div> : 
           ''  
         
         }
@@ -88,7 +91,7 @@ const rId=recipeId.recipeId
       {reviewError ?   <Message variant='danger'> {reviewError} </Message> :   "" }
 
      <form onSubmit={handleSubmit(onSubmit)}>
-     <Paper> 
+     <Paper data-test="review-div"> 
      <ThemeProvider >
 
     <Grid id = "registerForm"  
@@ -98,6 +101,7 @@ container spacing={3}>
 <Controller
   as={TextField}
   name={'comment'}
+  data-test={"comment"}
   rows={3}
   fullWidth
           multiline
@@ -158,7 +162,7 @@ container spacing={3}>
 
       <Grid container id="RegisterButton" item lg={12} md={12} sm={12}> 
 
-      <Button variant="contained" style={{width: "50%"}} type="submit" color="primary" >
+      <Button data-test="submit-button" variant="contained" style={{width: "50%"}} type="submit" color="primary" >
              Submit
               </Button>     
                </Grid>

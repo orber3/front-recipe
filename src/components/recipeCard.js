@@ -56,8 +56,8 @@ const useStyles = makeStyles((theme) => ({
 const RecipeReviewCard  = (props,history) => { 
 
   const userLogin = useSelector((state) => state.userLogin)
-  const {userInfo } = userLogin
 
+  const {userInfo } = userLogin
 
  
   const [anchorEl, setAnchorEl] = useState('')

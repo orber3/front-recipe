@@ -41,7 +41,7 @@ const setUp =( initialState={}) => {
 
 
 
-describe('render recipe list  ' , () => { 
+describe.skip('render recipe list  ' , () => { 
     let wrapper
             beforeEach (() => { 
                 // useSelector.mockImplementation(callback => {

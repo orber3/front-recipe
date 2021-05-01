@@ -13,7 +13,6 @@ import useStyles from '../styles/grid'
 
 
 
-
 const RecipeListScreen = ({history,match}) => {
 
     const classes = useStyles();
@@ -21,7 +20,7 @@ const RecipeListScreen = ({history,match}) => {
 
     const allRecipes = useSelector(state => state.allRecipes)
     const{loading , error , recipes} = allRecipes
-console.log(allRecipes)
+    console.log(loading)
 
     useEffect(() => {
         dispatch(listAllRecipes())
@@ -31,7 +30,7 @@ console.log(allRecipes)
     return (
         <>
           {loading ? <Loader /> :
-            <div className={classes.root}> 
+            <div className={classes.root} data-test="recipe-list"> 
 <Grid   container style={{marginLeft: '7%'}} id="listgrid" spacing={2}>
 <Grid data-test="listGrid" item lg={12}>
 <Grid container  justify="center" spacing={2}>
@@ -39,7 +38,7 @@ console.log(allRecipes)
 {recipes.map(recipe => (  
 
         <Grid key = {recipe._id} item  >
-          <Paper  className={classes.paper}>
+          <Paper data-test="card-div" className={classes.paper}>
 
           <RecipeReviewCard id={recipe._id}cookingTime={recipe.cookingTime} name = {recipe.name} user={recipe.user} ingredients={recipe.ingredients} description = {recipe.description} directions={recipe.directions} date={recipe.date}  image={recipe.image} rating={recipe.rating} numReviews={recipe.numReviews} />
 

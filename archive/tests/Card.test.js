@@ -32,7 +32,7 @@ const setUp =( initialState={} ) => {
 }
 
 
-describe('render card  ' , () => { 
+describe.skip('render card  ' , () => { 
 let wrapper
         beforeEach (() => { 
             wrapper=setUp()

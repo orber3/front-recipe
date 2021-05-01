@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
     return (
   <> 
   
-  <Button  id='reviewButton' onClick={handleOpen} variant="contained" style={{background: "purple"}} color="inherit" >
+  <Button  data-test="button-review" id='reviewButton' onClick={handleOpen} variant="contained" style={{background: "purple"}} color="inherit" >
   <InsertCommentIcon style={{color: 'white'}}  /> Review
                 </Button>  
   
